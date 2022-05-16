@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "CRUD on MongoDB Database",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ernest-nde/quiz-oc.git"
+  },
+  "author": "Ernest MEKONTSO NDE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ernest-nde/quiz-oc/issues"
+  },
+  "homepage": "https://github.com/ernest-nde/quiz-oc#readme"
+}
