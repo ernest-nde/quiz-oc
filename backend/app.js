@@ -23,6 +23,22 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
+// Liste de tous les produits disponible
+app.use('/api/products', (req, res, next) => {
+    Produit.find()
+    .then(produits => res.status(200).json(produits))
+    .catch(error => res.status(400).json({error}));
+});
+
+// Récupération d'un produit spécifique
+app.get('/api/products/:id', (req, res, next) => {
+    Produit.findOne({ _id: req.params.id })
+    .then(function(thing) {
+        res.status(200).json(thing)
+    })
+    .catch(error => res.status(404).json({error}));
+});
+
 // Enregistrement d'un nouveau produit
 app.post('/api/products', (req, res, next) => {
     delete req.body._id;
@@ -33,17 +49,6 @@ app.post('/api/products', (req, res, next) => {
     .then(() => res.status(201).json({message: 'produit bien enregistré!'}))
     .catch(function(error) {
         res.status(400).json({error});
-    });
-});
-
-// Récupération d'un produit spécifique
-app.post('/api/products/:id', (req, res, next) => {
-    Produit.findOne({ _id: req.params.id })
-    .then(function(thing) {
-        res.status(200).json(thing)
-    })
-    .catch(function(error) {
-        res.status(404).json({error});
     });
 });
 
@@ -58,7 +63,7 @@ app.put('/api/products/:id', (req, res, next) => {
     });
 });
 
-// Récupération d'un produit spécifique
+// Suppression d'un produit spécifique
 app.delete('/api/products/:id', (req, res, next) => {
     Produit.deleteOne({ _id: req.params.id })
     .then(() => {
@@ -67,13 +72,6 @@ app.delete('/api/products/:id', (req, res, next) => {
     .catch(function(error) {
         res.status(404).json({error});
     });
-});
-
-// Liste de tous les produits disponible
-app.get('/api/products', (req, res, next) => {
-    Produit.find()
-    .then(produits => res.status(200).json(produits))
-    .catch(error => res.status(400).json({error}));
 });
 
 module.exports = app;

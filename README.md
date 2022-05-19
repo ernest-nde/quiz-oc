@@ -17,5 +17,3 @@ So in Backend repertory we have differents files
 - models : which is the repertory that has the Product.js that representing our data structure.
 
 # HAVE A FUN!!!
-
-7Exi9FbFfws-gR3
